@@ -1,0 +1,32 @@
+.other-policy-container {
+  width: 30vw;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.other-policy-header {
+  text-align: center;
+  padding: 10px;
+  font-weight: 600;
+  color: white;
+  border: 1px solid black;
+  background: #2a78bc;
+  width: 20vw;
+  height: 20px;
+}
+
+.other-policy-body {
+  width: 20vw;
+  height: 150px;
+  border: 1px solid black;
+  padding: 10px;
+  background: white;
+}
+
+.otherPolicies_link {
+  cursor: pointer;
+  color: #2a78bc;
+  text-decoration: underline;
+}

@@ -1,0 +1,26 @@
+.submissionId, .effectiveDate, .address, .occupation {
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2vh;
+}
+
+.address {
+  height: 145px;
+}
+
+.client-Information {
+  width: 30vw;
+}
+
+.clientInformation-container {
+  display: flex;
+  width: 97vw;
+  height: 42vh;
+  border-bottom: 1px solid black;
+}
+
+.occupation > select {
+  position: relative;
+    width: 222px;
+}

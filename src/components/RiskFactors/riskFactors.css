@@ -1,0 +1,9 @@
+.catClaims,
+.nonCatClaims,
+.liabilityClaims,
+.protectionClass {
+  width: 20vw;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2vh;
+}

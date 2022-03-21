@@ -1,0 +1,36 @@
+.risk-score {
+  width: 30vw;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.risk-score-header {
+  width: 200px;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  font-weight: 600;
+  color: white;
+  border: 1px solid black;
+  background: #2a78bc;
+}
+
+.risk-score-container {
+  width: 200px;
+  height: 60px;
+  border: 1px solid black;
+  background: white;
+  text-align: center;
+  font-size: 25px;
+}
+
+.reset-risk-button {
+  width: 140px;
+  border-radius: 4px;
+  background: #2a78bc;
+  color: white;
+  margin-top: 20px;
+}

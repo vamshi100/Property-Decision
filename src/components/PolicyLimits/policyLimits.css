@@ -1,0 +1,32 @@
+.policy-limits-container {
+  display: flex;
+  width: 97vw;
+  height: 20vh;
+  border-bottom: 1px solid black;
+}
+
+.policy-limits {
+  width: 97vw;
+}
+
+.coverageA, .liabilityLimit, .deductibleLimit {
+  width: 20vw;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2vh;
+}
+
+.limits {
+  display: flex;
+  width: 70vw;
+  justify-content: space-between;
+}
+
+.coverageA > input, .liabilityLimit > input, .deductibleLimit > input {
+  text-align: right;
+}
+
+.coverageA > i, .liabilityLimit > i, .deductibleLimit > i {
+  right: 0;
+  left: 25px;
+}

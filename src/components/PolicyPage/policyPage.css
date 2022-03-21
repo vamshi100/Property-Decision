@@ -1,0 +1,53 @@
+.policy {
+  width: 100vw;
+    height: 100vh;
+    background: #e2e2e2;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+label, input, button, textarea, select {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid black;
+  background: white;
+  color: black;
+  /* text-align: right; */
+  font-size: 14px;
+}
+label {
+  border: none;
+  background: none;
+  text-align: left;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.risk-management {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container {
+  border: none;
+  padding: 30px;
+}
+
+.underwriting {
+  border-bottom: none;
+}
+
+i {
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: 20px;
+}

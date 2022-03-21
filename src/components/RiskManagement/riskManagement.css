@@ -1,0 +1,21 @@
+.conditionConcerns,
+.ratingConcerns,
+.liabilityConcerns,
+.climateRisk {
+  width: 20vw;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2vh;
+}
+
+.href {
+  display: flex;
+  width: 97vw;
+  justify-content: space-between;
+}
+
+.anchorDisabled {
+  pointer-events: none;
+  cursor: default;
+  color: #555555;
+}

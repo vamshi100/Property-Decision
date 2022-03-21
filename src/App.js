@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import {hot} from 'react-hot-loader/root';
+import React, {Component} from 'react';
+import {Switch, Route, BrowserRouter, withRouter} from 'react-router-dom';
+import MainPage from './components/MainPage/container';
+import PolicyPage from './components/PolicyPage/container';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render = () => {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={MainPage} />
+          <Route path="/policy-page/:id" component={PolicyPage} />
+        </Switch>
+      </BrowserRouter>
+    );
+  };
 }
 
-export default App;
+export default hot(App);

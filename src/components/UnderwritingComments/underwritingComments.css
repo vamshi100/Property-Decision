@@ -1,0 +1,9 @@
+.UnderwritingComments > textarea {
+  width: 95vw;
+  height: 100px;
+}
+
+.underwritingActions {
+  width: 20vw;
+  display: flex;
+}

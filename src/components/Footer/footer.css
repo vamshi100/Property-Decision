@@ -1,0 +1,17 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+}
+.footer-right {
+  width: 40vw;
+  justify-content: space-between;
+  display: flex;
+}
+
+.Submit-btn, .Save-btn, .Cancel-btn, .back-btn {
+  border-radius: 4px;
+    background: #2a78bc;
+    color: white;
+    margin-top: 20px;
+}
