@@ -26,27 +26,29 @@ class PolicyLimits extends Component {
       },
       {
         name: 'Liability Limit',
-        component: 'text',
+        component: 'select',
         htmlFor:"Liability Limit",
         label:"Liability Limit",
-        type: 'text',
+        id:"Liability Limit",
         className: 'liabilityLimit',
-        value: `${_.get(property, 'policies[0].liabilityLimit', '')}`,
+        list: ['$500000', '$1000000', '$2000000', '$3000000'],
+        value: `$${_.get(property, 'policies[0].liabilityLimit', '')}`,
         stateVariable: 'liabilityLimit',
         action: updatePolicy,
-        token: 'currency'
+        disabled: false
       },
       {
         name: 'Deductible Limit',
-        component: 'text',
+        component: 'select',
         htmlFor:"Deductible Limit",
         label:"Deductible Limit",
-        type: 'text',
+        id: 'Deductible Limit',
         className: 'deductibleLimit',
-        value: `${_.get(property, 'policies[0].deductibleLimit', '')}`,
+        list: ['$1000', '$2000', '$3000', '$4000', '1%', '2%'],
+        value: `${_.get(property, 'policies[0].deductibleToken', '') === 'percent' ? `${_.get(property, 'policies[0].deductibleLimit', '')}%` : `$${_.get(property, 'policies[0].deductibleLimit', '')}`}`,
         stateVariable: 'deductibleLimit',
         action: updatePolicy,
-        token: _.get(property, 'policies[0].deductibleToken', '')
+        disabled: false
       },
     ];
     return (

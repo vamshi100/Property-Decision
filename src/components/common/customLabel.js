@@ -20,7 +20,7 @@ class CustomLabel extends Component {
 
 CustomLabel.propTypes = {
   htmlFor: Proptypes.string,
-  label: Proptypes.string
+  label: Proptypes.any
 }
 
 export default CustomLabel;

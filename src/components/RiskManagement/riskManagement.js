@@ -58,19 +58,19 @@ class RiskManagement extends Component {
         stateVariable: 'liabilityConcerns',
         action: updatePolicy,
       },
-      {
-        name: 'Climate Risk',
-        component: 'select',
-        htmlFor:"Climate Risk",
-        label:"Climate Risk",
-        id: 'Climate Risk',
-        className: 'climateRisk',
-        list: ['Yes', 'No'],
-        hasLink: true,
-        value: (_.get(property, 'policies[0].climateRisk', '')),
-        stateVariable: 'climateRisk',
-        action: updatePolicy,
-      }
+      // {
+      //   name: 'Climate Risk',
+      //   component: 'select',
+      //   htmlFor:"Climate Risk",
+      //   label:"Climate Risk",
+      //   id: 'Climate Risk',
+      //   className: 'climateRisk',
+      //   list: ['Yes', 'No'],
+      //   hasLink: true,
+      //   value: (_.get(property, 'policies[0].climateRisk', '')),
+      //   stateVariable: 'climateRisk',
+      //   action: updatePolicy,
+      // }
     ];
     return (
       <div className="property-characteristics">
@@ -97,9 +97,9 @@ class RiskManagement extends Component {
         <a className="liabilityConcerns" href="http://www.google.com" target="_blank" rel="noreferrer">
           See Evidence
         </a>
-        <a className={`climateRisk ${_.get(property, 'policies[0].climateRisk', '') === 'No' ? 'anchorDisabled' : ''}`} href="http://www.google.com" target="_blank" rel="noreferrer">
+        {/* <a className={`climateRisk ${_.get(property, 'policies[0].climateRisk', '') === 'No' ? 'anchorDisabled' : ''}`} href="http://www.google.com" target="_blank" rel="noreferrer">
           See Evidence
-        </a>
+        </a> */}
       </div>
     )
 

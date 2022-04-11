@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Proptypes from 'prop-types';
+import _ from 'lodash';
 
 import './riskScore.css'
 
@@ -8,7 +9,7 @@ class RiskScore extends Component {
 
   render = () => {
     const {
-      score
+      property
     } = this.props;
     return (
       <div className="risk-score">
@@ -16,7 +17,7 @@ class RiskScore extends Component {
           Policy Risk Score
         </div>
         <div className="risk-score-container">
-          {score}
+          {Math.round(_.get(property, 'policies[0].riskScore', 0) * 1000) / 1000}
         </div>
         <button className="reset-risk-button">Reset Risk Score</button>
       </div>
@@ -25,12 +26,9 @@ class RiskScore extends Component {
   };
 }
 
-RiskScore.defaultProps = {
-  score: 10
-};
 
 RiskScore.propTypes = {
-  score: Proptypes.any
+  property: Proptypes.any
 };
 
 export default RiskScore;

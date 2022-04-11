@@ -111,9 +111,11 @@ class PropertyCharacteristics extends Component {
         id: 'Smart Dwelling',
         className: 'smartDwelling',
         list: ['Yes', 'No'],
-        value: (_.get(property, 'policies[0].videoAndSmartDwelling', '') === 'Yes' ? 'No' : _.get(property, 'policies[0].smartDwelling', '')),
+        value: (_.get(property, 'policies[0].smartDwelling', '')),
+        // value: (_.get(property, 'policies[0].videoAndSmartDwelling', '') === 'Yes' ? 'No' : _.get(property, 'policies[0].smartDwelling', '')),
         stateVariable: 'smartDwelling',
         action: updatePolicy,
+        disabled: _.get(property, 'policies[0].videoAndSmartDwelling', '') === 'Yes' ? true : false
       },
       {
         name: 'Video & Smart Dwelling',
@@ -126,6 +128,8 @@ class PropertyCharacteristics extends Component {
         value: (_.get(property, 'policies[0].videoAndSmartDwelling', '')),
         stateVariable: 'videoAndSmartDwelling',
         action: updatePolicy,
+        disabled: _.get(property, 'policies[0].smartDwelling', '') === 'Yes' &&
+        _.get(property, 'policies[0].videoAndSmartDwelling', '') === 'No' ? true : false
       }
     ];
     return (

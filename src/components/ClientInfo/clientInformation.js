@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import CustomForm from '../common/customForm';
 import './clientInformation.css';
-import { update } from 'immutable';
 
 
 class ClientInformation extends Component {
@@ -11,6 +10,20 @@ class ClientInformation extends Component {
       property,
       updatePolicy
     } = this.props;
+    const addressText = () => {
+      return (
+        <div>
+          Named Insured <br/> Address <br/> City <br/> State <br/> Zip code
+        </div>
+      )
+    };
+    const occupationText = () => {
+      return (
+        <div>
+          Named Insured <br/> Occupation
+        </div>
+      )
+    };
     const clientInfoConfig = [
       {
         name: 'Submission ID',
@@ -36,12 +49,12 @@ class ClientInformation extends Component {
         name: 'Address',
         component: 'textarea',
         htmlFor:"Address",
-        label:"Address",
+        label: addressText(),
         id: 'Named Insured Address',
         data: '1234 tst st, test, usa.',
         className: 'address',
         value: `${_.get(property, 'policies[0].streetAddress', '')}
-        \n${_.get(property, 'policies[0].cityAddress', '')}
+        '\n${_.get(property, 'policies[0].cityAddress', '')}
         \n${_.get(property, 'policies[0].stateAddress', '')}
         \n${_.get(property, 'policies[0].pinAddress', '')}`,
         disabled: true
@@ -50,7 +63,7 @@ class ClientInformation extends Component {
         name: 'Occupation',
         component: 'select',
         htmlFor:"Occupation",
-        label:"Occupation",
+        label: occupationText(),
         id: 'Named Insured Occupation',
         className: 'occupation',
         list: ['Manager', 'Teacher', 'Clerk', 'Student', 'Retired', 'other'],
