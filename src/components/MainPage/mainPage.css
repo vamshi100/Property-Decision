@@ -14,3 +14,10 @@ label, input, button {
 .load-text {
   font-size: 35px;
 }
+
+.mainPageLogo {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 1%; 
+}

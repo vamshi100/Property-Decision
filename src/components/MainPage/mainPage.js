@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import hclLogo from '../../inputData/HCL_Logo.svg';
 import './mainPage.css'
 
 class MainPage extends Component {
@@ -24,6 +25,7 @@ class MainPage extends Component {
     } = this.state;
     return (
       <div className="home">
+        <img src={hclLogo} height="100px" width="100px" className="mainPageLogo"/>
         <label htmlFor="policy number">Policy Number</label>
         <input name="policy number" type="text" onChange={this.policyNumber}/>
         

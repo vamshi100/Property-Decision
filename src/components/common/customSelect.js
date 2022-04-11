@@ -12,13 +12,20 @@ class CustomSelect extends Component {
       action, 
       stateVariable
     } = this.props;
-    const change = e.target.value;
-    action(stateVariable, change);
+    const {
+      section
+    } = this.props;
+    let val;
+    val = e.target.value;
+    if (section === 'policyLimits') {
+      val = e.target.value.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+    }
+    action(stateVariable, val);
   }
   renderOptions(list) {
     const optionsList = list.map((item, idx) => {
         return (
-        <option value={item} key={idx} id={item}>{item}</option>
+        <option value={item} key={idx} id={item} >{item}</option>
         );
     });
     return optionsList;

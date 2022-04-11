@@ -13,6 +13,7 @@ import Footer from '../Footer/footer';
 import PolicyLimits from '../PolicyLimits/policyLimits';
 import input from '../../inputData/input.xlsx';
 import input1 from '../../inputData/input1.xlsx';
+import hclLogo from '../../inputData/HCL_Logo.svg';
 import './policyPage.css'
 
 class PolicyPage extends Component {
@@ -75,6 +76,7 @@ class PolicyPage extends Component {
     }
     return (
       <div className="policy">
+        <img src={hclLogo} height="100px" width="100px" />
         <h1>
           Property Underwriting Decision Support
         </h1>

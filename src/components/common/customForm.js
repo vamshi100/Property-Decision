@@ -60,6 +60,7 @@ class ClientForm extends Component {
                 disabled={item.disabled}
                 action={item.action}
                 stateVariable={item.stateVariable}
+                section={item.section}
               />
             </div >
         )

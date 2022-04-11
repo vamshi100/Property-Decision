@@ -1,6 +1,7 @@
 {
   "name": "property-decision",
   "version": "0.1.0",
+  "owner": "Venkatesh Vamshi Reddy Anireddy",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
