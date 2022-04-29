@@ -1,15 +1,16 @@
 import {connect} from 'react-redux';
 import MainPage from './mainPage';
-// import {loadExcelData, loading} from './redux/actions/propertyActions';
+import {loadReferralData, referralLoading} from '../../redux/actions/propertyActions';
 
 const mapStateToProps = state => {
   return {
-    property: state.property,
-    loading: state.property.loading
+    property: state.property
   };
 }
 
 const mapDispatchToProps = {
+  loadReferralData,
+  referralLoading
 }
 
 export default connect(

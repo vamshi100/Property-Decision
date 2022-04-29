@@ -1,10 +1,11 @@
 .home {
+  align-content: space-between;
   width: 100vw;
     height: 100vh;
-    background: #e2e2e2;
+    background: #ffffff;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center;  
+
 }
 
 label, input, button {
@@ -16,8 +17,7 @@ label, input, button {
 }
 
 .mainPageLogo {
-  display: block;
-  position: absolute;
   top: 0;
   left: 1%; 
+  height: 16px;
 }
