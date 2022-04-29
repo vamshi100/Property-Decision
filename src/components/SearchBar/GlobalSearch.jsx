@@ -11,24 +11,29 @@ import '../AppBar/AppBar.css';
 
 export default function GlobalSearch(props) {
     const {data} = props;
-    const [state, setState] = React.useState({});
+    const [state, setState] = React.useState({
+      autocompleteLabel: 'Enter a policy number...',
+      policyNumber:''
+    });
     const history = useHistory();
   return (
     <Stack spacing={2} sx={{ width: 350 }}>
-      {/* <Autocomplete
-        id="free-solo-demo"
-        freeSolo
-        options={top100Films.map((option) => option.title)}
-        renderInput={(params) => <TextField {...params} label="freeSolo" />}
-      /> */}
       <Autocomplete
+        clearOnBlur
         freeSolo
         fullWidth
         id="free-solo-2-demo"
+        loading={data.length ? false : true}
         disableClearable
-        onChange={state.policyNumber ? history.push({
-            pathname: `policy-page/${state.policyNumber}` 
-        }) : ''}
+        onBlur={() => setState({autocompleteLabel: 'Enter a policy number...'})}
+        onChange={(event) => {
+          if(event.type === 'click'){
+            history.push({
+              pathname: `policy-page/${event.target.textContent}` 
+          })
+          }
+      }}
+        onFocus={() => setState({autocompleteLabel: ''})}
         onInputChange={(_event, value) => {
             
             if(value){
@@ -42,10 +47,11 @@ export default function GlobalSearch(props) {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Enter a policy number..."
+            label={state.autocompleteLabel}
             InputProps={{
               ...params.InputProps,
               type: 'search',
+              
             }}
             size='small'
           />

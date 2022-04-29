@@ -23,14 +23,14 @@ import MainPageFooter from './MainPageFooter';
 
 function MainPage(props) {
 
-    const {loadReferralData, property, referralLoading} = props;
+  const { loadReferralData, property, referralLoading } = props;
 
-    const [state, setState] = useState({
-      policyNumber: ''
-    });
-    
+  const [state, setState] = useState({
+    policyNumber: ''
+  });
 
-  
+
+
 
   function policyNumber(e) {
     setState({
@@ -38,8 +38,8 @@ function MainPage(props) {
     });
   };
 
-  useEffect(()=> {
-    if(!property.referralDataIsLoading){
+  useEffect(() => {
+    if (!property.referralDataIsLoading) {
       referralLoading(true);
     } else {
       referralLoading(false);
@@ -58,97 +58,92 @@ function MainPage(props) {
     });
   }, []);
 
-  useEffect(()=>{
-    if(property.referralData.length){
+  useEffect(() => {
+    if (property.referralData.length) {
       referralLoading(false);
     };
   }, [property.referralData]);
 
 
-    // Data Grid Columns & Rows
-    const columns = [
-      {
-        field: 'submissionID',
-        headerName: 'Submission Number',
-        width: 175,
-        type: 'string'
-      },
-      {
-        field: 'policyId',
-        headerName: 'Policy Number',
-        width: 175,
-        editable: false,
-      },
-      {
-        field: 'effectiveDate',
-        headerName: 'Policy Effective Date',
-        width: 175,
-        editable: false,
-        sortable: true,
-      },
-      {
-        field: 'dateReferred',
-        headerName: 'Date Referred',
-        type: 'number',
-        width: 150,
-        editable: true,
-      },
-      {
-        field: 'daysPendingReview',
-        headerName: 'Days Pending Review',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 175,
-      },
-      {
-        field: 'status',
-        headerName: 'Status',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 175,
-      },
-    ];
+  // Data Grid Columns & Rows
+  const columns = [
+    {
+      field: 'submissionId',
+      headerName: 'Submission Number',
+      width: 175,
+      type: 'string'
+    },
+    {
+      field: 'policyId',
+      headerName: 'Policy Number',
+      width: 175,
+      editable: false,
+    },
+    {
+      field: 'effectiveDate',
+      headerName: 'Policy Effective Date',
+      width: 175,
+      editable: false,
+      sortable: true,
+    },
+    {
+      field: 'dateReferred',
+      headerName: 'Date Referred',
+      type: 'number',
+      width: 150,
+      editable: true,
+    },
+    {
+      field: 'daysPendingReview',
+      headerName: 'Days Pending Review',
+      description: 'This column has a value getter and is not sortable.',
+      sortable: false,
+      width: 175,
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      description: 'This column has a value getter and is not sortable.',
+      sortable: false,
+      width: 175,
+    },
+  ];
 
-    const history = useHistory();
-    const rows = property.referralData;
+  const history = useHistory();
+  const rows = property.referralData;
 
-    let policyNumbers = [];
 
-    if(property.referralData.length){
-      property.referralData.forEach(policy => {
-        policyNumbers.push(policy.policyId);
-      })
-    }
+  return (
+    <Grid container className="home" >
 
-    
+      <AppBar {...props} />
 
-    // } else {
-    return (
-      <Grid container className="home" >
+      <Grid item xs={10} style={{ border: 'solid #000 1px', height: 400, width: '70%' }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          hideFooter
+          loading={property.referralDataIsLoading}
+          onCellClick={(event) => {
 
-        <AppBar {...props} />
-
-        <Grid item xs={10} style={{ border: 'solid #000 1px', height: 400, width: '70%' }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            hideFooter
-            loading={property.referralDataIsLoading}
-            onCellClick={(event) => {
-              if(policyNumbers.includes(event.value)){
-                history.push(`policy-page/${event.value}`)
-              }
-            }}
-            pageSize={10}
-            rowsPerPageOptions={[3]}
-          // disableSelectionOnClick
-          />
-        </Grid>
-
-        <MainPageFooter />
-
+            if (property.referralData.length) {
+              property.referralData.forEach(policyObject => {
+                if (policyObject.submissionId === event.value || policyObject.policyId === event.value) {
+                  history.push(`policy-page/${policyObject.policyId}`)
+                }
+              })
+            }
+          }}
+          pageSize={10}
+          rowsPerPageOptions={[3]}
+        // disableSelectionOnClick
+        />
       </Grid>
-    );
+
+      <MainPageFooter />
+
+    </Grid>
+  );
 
 };
 
