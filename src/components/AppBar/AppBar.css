@@ -1,0 +1,14 @@
+.appbar {
+  height: 10%;
+  width: 100vw;
+  align-items: center;
+  background: rgb(0, 120, 215);
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+
+.MuiAutocomplete-root .MuiOutlinedInput-root {
+  background-color: #fff;
+}

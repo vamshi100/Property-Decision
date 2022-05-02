@@ -1,6 +1,8 @@
 import _ from 'lodash';
 export const STORE_DATA = 'STORE_DATA';
 export const LOADING = 'LOADING';
+export const REFERRAL_DATA = 'REFERRAL_DATA';
+export const REFERRAL_LOADING = 'REFERRAL_LOADING';
 export const UPDATE_POLICY = 'UPDATE_POLICY';
 
 export const loadExcelData = (data, policyId) => {
@@ -19,8 +21,8 @@ export const loadExcelData = (data, policyId) => {
       coverageA: _.get(item, '[Cov A Limits ($)]', ''),
       liabilityLimit: _.get(item, '[Liability Limits]', ''),
       // deductibleLimit: _.get(item, '[Deductible]', '0'),
-      deductibleLimit: _.get(item, '[Deductible]', 0)  < 1 ? `${_.get(item, '[Deductible]', 0) * 100}` :`${_.get(item, '[Deductible]', 0)}`,
-      deductibleToken: _.get(item, '[Deductible]', 0)  < 1 ? `percent` :`currency`,
+      deductibleLimit: _.get(item, '[Deductible]', 0) < 1 ? `${_.get(item, '[Deductible]', 0) * 100}` : `${_.get(item, '[Deductible]', 0)}`,
+      deductibleToken: _.get(item, '[Deductible]', 0) < 1 ? `percent` : `currency`,
       ageOfDwelling: _.get(item, '[Age of dwelling(Yrs)]', ''),
       ageOfroof: _.get(item, '[Age of roof(yrs)]', ''),
       roofType: _.get(item, '[Roof type]', ''),
@@ -49,10 +51,41 @@ export const loadExcelData = (data, policyId) => {
   }
 };
 
-export const loading = val => {
+export const loadReferralData = (data) => {
+  
+  const payload = data.map((item, index) => {
+
+
+    return {
+      id: index,
+      submissionId: _.get(item, '[Submission ID]', '-'),
+      policyId: _.get(item, '[Policy Number]', '-'),
+      effectiveDate: _.get(item, '[Policy Effective Date]', 'N/A'),
+      dateReffered: _.get(item, '[Date Referred]', 'N/A'),
+      daysPendingReview: _.get(item, '[Days Pending Review]', 'N/A'),
+      status: _.get(item, '[Status]', 'N/A'),
+
+
+    }
+  });
+  const filterRefferalByDateDesc = payload.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
+  return {
+    type: REFERRAL_DATA,
+    payload: filterRefferalByDateDesc.slice(0, 10)
+  }
+};
+
+export const loading = value => {
   return {
     type: LOADING,
-    payload: val
+    payload: value
+  }
+};
+
+export const referralLoading = value => {
+  return {
+    type: REFERRAL_LOADING,
+    payload: value
   }
 };
 

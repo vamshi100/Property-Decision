@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import ClientInformation from '../ClientInfo/clientInformation';
 import * as XLSX from "xlsx";
@@ -17,7 +17,7 @@ import hclLogo from '../../inputData/HCL_Logo.svg';
 import './policyPage.css'
 
 class PolicyPage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       policyNumber: ''
@@ -25,7 +25,7 @@ class PolicyPage extends Component {
     this.filterPolicy = this.filterPolicy.bind(this);
     this.policyNumber = this.policyNumber.bind(this);
   }
-  
+
   componentDidMount() {
     const {
       loadExcelData,
@@ -36,22 +36,22 @@ class PolicyPage extends Component {
     loading(true);
     fetch(input).then(res => {
       return res.arrayBuffer();
-        }).then(res => {
-        var wb = XLSX.read(new Uint8Array(res), {
+    }).then(res => {
+      let wb = XLSX.read(new Uint8Array(res), {
         type: 'array'
       });
       wb.SheetNames.forEach(sheet => {
-      let rawObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheet]);
+        let rawObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheet]);
         loadExcelData(rawObj, policyId);
       });
     });
-}
+  }
 
   filterPolicy() {
     const {
       policyNumber
     } = this.state;
-    <Link to={`/policy-page/${policyNumber}`}/>
+    <Link to={`/policy-page/${policyNumber}`} />
   }
 
   policyNumber(e) {
@@ -82,24 +82,24 @@ class PolicyPage extends Component {
         </h1>
         <div className="container">
           <div className="clientInformation-container">
-            <ClientInformation property={property} updatePolicy={updatePolicy}/>
-            <PolicyRiskScore property={property}/>
-            <OtherActivePolicies property={property}/>
+            <ClientInformation property={property} updatePolicy={updatePolicy} />
+            <PolicyRiskScore property={property} />
+            <OtherActivePolicies property={property} />
           </div>
           <div className="policy-limits-container">
-            <PolicyLimits property={property} updatePolicy={updatePolicy}/>
+            <PolicyLimits property={property} updatePolicy={updatePolicy} />
           </div>
           <div className="property-characteristics-container">
-            <PropertyCharacteristics property={property} updatePolicy={updatePolicy}/>
+            <PropertyCharacteristics property={property} updatePolicy={updatePolicy} />
           </div>
           <div className="property-characteristics-container">
-            <RiskFactors property={property} updatePolicy={updatePolicy}/>
+            <RiskFactors property={property} updatePolicy={updatePolicy} />
           </div>
           <div className="property-characteristics-container risk-management">
-            <RiskManagement property={property} updatePolicy={updatePolicy}/>
+            <RiskManagement property={property} updatePolicy={updatePolicy} />
           </div>
           <div className="property-characteristics-container underwriting">
-            <UnderwritingComments property={property} updatePolicy={updatePolicy}/>
+            <UnderwritingComments property={property} updatePolicy={updatePolicy} />
           </div>
           <div className="property-characteristics-container footer-container">
             <Footer />
