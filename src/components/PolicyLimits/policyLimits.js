@@ -3,6 +3,11 @@ import _ from 'lodash';
 import CustomForm from '../common/customForm';
 import './policyLimits.css';
 
+// MUI Components
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { withTheme } from '@mui/styles';
+
 
 class PolicyLimits extends Component {
   
@@ -54,12 +59,12 @@ class PolicyLimits extends Component {
       },
     ];
     return (
-      <div className="policy-limits">
-        <h3>Policy Limits</h3>
-        <div className="limits">
-          <CustomForm config={policyLimitsConfig} />
-        </div>
-      </div>
+      <Grid container xs={12} className="policy-limits">
+        <Typography variant='h6'>Policy Limits</Typography>
+        <Grid item xs={12} className="limits" >
+          <CustomForm config={policyLimitsConfig} formType="policy-limits" />
+        </Grid>
+      </Grid>
     );
   }
 

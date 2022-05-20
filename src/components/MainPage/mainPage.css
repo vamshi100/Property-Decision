@@ -1,5 +1,11 @@
+#datagrid-wrapper{
+    height: 75%;
+    overflow-x: hidden;
+    width: 100%;
+}
+
 .home {
-  align-content: space-between;
+  align-content: flex-start;
   width: 100vw;
     height: 100vh;
     background: #ffffff;
@@ -16,8 +22,55 @@ label, input, button {
   font-size: 35px;
 }
 
+.main-page-footer{
+  background-color: #f2f2f2;
+  height: 5%;
+}
+
 .mainPageLogo {
   top: 0;
   left: 1%; 
   height: 16px;
+}
+
+
+.MuiDataGrid-cell--textCenter {
+  border: none !important;
+}
+
+.MuiDataGrid-cell--textCenter:hover {
+  background-color: #e8e7e7;
+  border: none !important;
+}
+
+.MuiDataGrid-columnHeaders {
+  background: rgb(0, 120, 215);
+  color: #ffffff;
+}
+
+.MuiDataGrid-columnHeaderTitle{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.MuiDataGrid-menuIconButton{
+  margin-right: 20px !important;
+  height: 20px;
+  width: 20px;
+}
+
+.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeSmall{
+  margin-left: 50px;
+  height: 20px;
+  width: 20px;
+}
+
+.policy-number-cell, .submission-number-cell {
+  color:rgb(0, 120, 215);
+  cursor: pointer !important;
+  text-decoration: underline;
+}
+
+.policy-number-cell:hover, .submission-number-cell:hover {
+  background-color: #e8e7e7;
 }

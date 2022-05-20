@@ -13,6 +13,16 @@
   padding-bottom: 2vh;
 }
 
+.ageOfDwelling > input, .ageOfRoof > input {
+  margin: 0 12px 0 0;
+  min-width: 177px;
+}
+
+.dwellingSquareFeet > input {
+  margin: 0 16px 0 0;
+  min-width: 177px;
+}
+
 .property-characteristics-container {
   display: flex;
   width: 97vw;

@@ -4,6 +4,10 @@ import CustomForm from '../common/customForm';
 import './clientInformation.css';
 
 
+// MUI Components
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+
 class ClientInformation extends Component {
   renderClientInformation() {
     const {
@@ -26,6 +30,30 @@ class ClientInformation extends Component {
     };
     const clientInfoConfig = [
       {
+        name: 'Policy Owner full name',
+        component: 'text',
+        htmlFor:"Policy Owner full name",
+        label:"Policy Owner",
+        type: 'text',
+        className: 'policy-owner-full-name',
+        value: _.get(property, 'policies[0].policyOwnerFullName', ''),
+        disabled: true
+      },
+      {
+        name: 'Address',
+        component: 'textarea',
+        htmlFor:"Address",
+        label: addressText(),
+        id: 'Named Insured Address',
+        data: '1234 tst st, test, usa.',
+        className: 'address',
+        value: `${_.get(property, 'policies[0].streetAddress', '')}
+        '\n${_.get(property, 'policies[0].cityAddress', '')}
+        \n${_.get(property, 'policies[0].stateAddress', '')}
+        \n${_.get(property, 'policies[0].pinAddress', '')}`,
+        disabled: true
+      },
+      {
         name: 'Submission ID',
         component: 'text',
         htmlFor:"Submission ID",
@@ -46,17 +74,13 @@ class ClientInformation extends Component {
         disabled: true
       },
       {
-        name: 'Address',
-        component: 'textarea',
-        htmlFor:"Address",
-        label: addressText(),
-        id: 'Named Insured Address',
-        data: '1234 tst st, test, usa.',
-        className: 'address',
-        value: `${_.get(property, 'policies[0].streetAddress', '')}
-        '\n${_.get(property, 'policies[0].cityAddress', '')}
-        \n${_.get(property, 'policies[0].stateAddress', '')}
-        \n${_.get(property, 'policies[0].pinAddress', '')}`,
+        name: 'Prior Insurance',
+        component: 'text',
+        htmlFor:"Prior Insurance",
+        label:"Prior Insurance",
+        type: 'text',
+        className: 'priorInsurance',
+        value: _.get(property, 'policies[0].priorInsurance', ''),
         disabled: true
       },
       {
@@ -74,10 +98,17 @@ class ClientInformation extends Component {
       }
     ];
     return (
-      <div className="client-Information">
-        <h3>Client Information</h3>
-        <CustomForm config={clientInfoConfig} />
-      </div>
+      <Grid container xs={6} className="client-Information">
+        <Grid item xs={12} style={{margin: '0 0 10px 0'}}>
+        <Typography variant='h6'>
+          Client Information
+          </Typography>
+        </Grid>
+        
+        <CustomForm config={clientInfoConfig} formType="client-information" />
+
+        
+      </Grid>
     );
   }
 

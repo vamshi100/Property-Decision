@@ -6,20 +6,19 @@
 }
 
 .policy-limits {
-  width: 97vw;
+  width: 100%;
 }
 
 .coverageA, .liabilityLimit, .deductibleLimit {
   width: 20vw;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 2vh;
+  padding: 2vh;
 }
 
 .limits {
   display: flex;
   width: 70vw;
-  justify-content: space-between;
 }
 
 .coverageA > input, .liabilityLimit > input, .deductibleLimit > input {

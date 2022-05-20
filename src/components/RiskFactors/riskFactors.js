@@ -4,6 +4,11 @@ import CustomForm from '../common/customForm';
 import './riskFactors.css';
 
 
+// MUI Components
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { withTheme } from '@mui/styles';
+
 class RiskFactors extends Component {
   constructor(props){
     super(props);
@@ -68,12 +73,12 @@ class RiskFactors extends Component {
       }
     ];
     return (
-      <div className="property-characteristics">
-        <h3>Risk Factors</h3>
-        <div className="characteristics">
-          <CustomForm config={RiskFactorsConfig} />
-        </div>
-      </div>
+      <Grid container className="property-characteristics">
+        <Typography variant='h6'>Risk Factors</Typography>
+        <Grid item className="risk-form">
+          <CustomForm config={RiskFactorsConfig} formType="risk-factors" />
+        </Grid>
+      </Grid>
     );
   }
 

@@ -4,6 +4,11 @@ import CustomForm from '../common/customForm';
 import './propertyCharacteristics.css';
 
 
+// MUI Components
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { withTheme } from '@mui/styles';
+
 class PropertyCharacteristics extends Component {
   constructor(props){
     super(props);
@@ -133,12 +138,12 @@ class PropertyCharacteristics extends Component {
       }
     ];
     return (
-      <div className="property-characteristics">
-        <h3>Property Characteristics</h3>
-        <div className="characteristics">
-          <CustomForm config={PropertyCharacteristicsConfig} />
-        </div>
-      </div>
+      <Grid container className="property-characteristics">
+        <Typography variant='h6' style={{margin: '0 0 20px 0'}}>Property Characteristics</Typography>
+        <Grid item xs={12} className="characteristics">
+          <CustomForm config={PropertyCharacteristicsConfig} formType="property-characteristics" />
+        </Grid>
+      </Grid>
     );
   }
 

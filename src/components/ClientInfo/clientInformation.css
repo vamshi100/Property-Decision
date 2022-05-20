@@ -1,8 +1,20 @@
-.submissionId, .effectiveDate, .address, .occupation {
+.submissionId, .effectiveDate, .address, .occupation, .policy-owner-full-name {
     width: 20vw;
     display: flex;
     justify-content: space-between;
     padding-bottom: 2vh;
+}
+
+/* .occupation > label {
+    align-self: center;
+} */
+
+.priorInsurance {
+  width: 20vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2vh;
 }
 
 .address {
@@ -18,6 +30,17 @@
   width: 97vw;
   height: 46vh;
   border-bottom: 1px solid black;
+}
+
+.effectiveDate {
+  height: fit-content;
+  padding-top: 1vh;
+}
+
+.occupation {
+  align-items: center;
+  height: 40px;
+  
 }
 
 .occupation > select {

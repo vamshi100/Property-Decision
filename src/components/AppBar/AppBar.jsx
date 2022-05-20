@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import hclLogo from "../../logo.png";
 import profile_pic from "../../images/profile_pic.png";
 
@@ -15,16 +16,18 @@ import GlobalSearch from '../SearchBar/GlobalSearch';
 
 function AppBar(props) {
 
-    const {property} = props;
+    const {appBar, property} = props;
 
   return (
-    <Grid item className="appbar home-appbar">
+    <Grid item className={`${appBar}`} >
+      <Link to='/'>
       <img
         src={hclLogo}
         height="100px"
         width="100px"
         className="mainPageLogo"
       />
+      </Link>
 
       <Grid item className="global-search">
         <GlobalSearch data={property.referralData} />

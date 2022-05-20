@@ -3,15 +3,33 @@
   justify-content: space-between;
   width: 90vw;
 }
-.footer-right {
+.footer-left, .footer-right {
   width: 40vw;
   justify-content: space-between;
   display: flex;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.Submit-btn, .Save-btn, .Cancel-btn, .back-btn {
+.back-btn {
+  cursor: pointer;
+}
+
+.Submit-btn-inactive, .Save-btn-inactive, .Back-btn-inactive {
   border-radius: 4px;
-    background: #2a78bc;
-    color: white;
+    background: #d5d4d4;
+    cursor: not-allowed;
+    color: #000000;
+    height: 25%;
     margin-top: 20px;
 }
+
+.Submit-btn-active, .Save-btn-active, .Cancel-btn-active, .Back-btn-active {
+  border-radius: 4px;
+    background: rgb(0, 120, 215);
+    cursor: pointer;
+    color: #ffffff;
+    height: 25%;
+    margin-top: 20px;
+}
+

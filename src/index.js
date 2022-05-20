@@ -18,6 +18,11 @@ const theme = createTheme({
       main: 'rgb(0, 120, 215)',
     },
   },
+  typography: {
+    h6: {
+      fontWeight: 600,
+    },
+  },
 });
 
 ReactDOM.render(
