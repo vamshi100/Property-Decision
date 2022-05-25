@@ -30,19 +30,13 @@ function AppBar(props) {
       </Link>
 
       <Grid item className="global-search">
-        <GlobalSearch data={property.referralData} />
+        <GlobalSearch data={property.referralData} {...props} />
       </Grid>
 
       <Grid item className="profile">
         <Avatar alt="UU" src={profile_pic} />
       </Grid>
 
-      {/* <label htmlFor="policy number">Policy Number</label>
-            <input name="policy number" type="text" onChange={this.policyNumber} />
-
-            <Link to={`/policy-page/${policyNumber}`}>
-              <button>View</button>
-            </Link> */}
     </Grid>
   );
 }

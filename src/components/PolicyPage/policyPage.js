@@ -53,30 +53,26 @@ function PolicyPage(props) {
       });
       wb.SheetNames.forEach(sheet => {
         let rawObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheet]);
-        loadExcelData(rawObj, policyId);
         loadAllCumRiskScores(rawObj);
       });
     });
   }, [])
-
+  
   // Calculate Cumulative Risk after initial data load
   useEffect(() => {
-    if (state.currentPolicy !== (null && undefined && []) ){
-      const newCumulativeRiskParams = Array.from(Object.values(state.currentPolicy).slice(9,30));
+    if (property.policies !== null && property.policies !== undefined && property.policies.length !== 0){
+      const newCumulativeRiskParams = Array.from(Object.values(property.policies[0]).slice(9,30));
       calculateCumulativeRisk(newCumulativeRiskParams);
-      console.log("maxOfAllCumRiskScores ==============> " + JSON.stringify(property.maxOfAllCumRiskScores))
-      console.log(state.currentPolicy)
     }
-  }, [property.policies]);
+  },[]);
 
   // Calculate Risk Score upon cumulativeRisk change
   useEffect(() => {
     calculateRiskScore(property.cumulativeRisk, property.maxOfAllCumRiskScores)
-    console.log("cumRisk ==============> " + JSON.stringify(property.cumulativeRisk))
-  }, [property.cumulativeRisk])
+  }, [property.cumulativeRisk, property.maxOfAllCumRiskScores])
 
   
-
+  // React-Router History
   const history = useHistory();
 
 
@@ -122,7 +118,7 @@ function PolicyPage(props) {
 
       <Grid item className="container" direction='column' wrap>
         <Grid container direction="row" className="clientInformation-container">
-          <PolicyRiskScore property={property} primary={primary} />
+          <PolicyRiskScore property={property} primary={primary} state={state} setState={setState} {...props} />
           <ClientInformation property={property} updatePolicy={updatePolicy} />
           <OtherActivePolicies property={property} primary={primary} />
         </Grid>

@@ -10,7 +10,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import '../AppBar/AppBar.css';
 
 export default function GlobalSearch(props) {
-    const {data} = props;
+    const {data, loadExcelData } = props;
+    const { rawObj } = props.property;
     const [state, setState] = React.useState({
       autocompleteLabel: 'Enter a policy number...',
       policyNumber:''
@@ -30,6 +31,7 @@ export default function GlobalSearch(props) {
       })}
         onChange={(event) => {
           if(event.type === 'click' && !history.location.pathname.includes('policy-page')){
+            loadExcelData(rawObj, event.target.textContent);
             history.push({
               pathname: `policy-page/${event.target.textContent}`,
               state: {

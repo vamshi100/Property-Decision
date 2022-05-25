@@ -24,7 +24,6 @@ export const calculateCumulativeRisk = (paramsArr) => {
 }
 
 export const calculateRiskScore = (cumulativeRisk, maxOfAllCumulativeRisk) => {
-  debugger
   return {
     type: CALCULATE_RISK_SCORE,
     payload: cumulativeRisk / (Math.max(cumulativeRisk, maxOfAllCumulativeRisk))
@@ -137,7 +136,8 @@ export const loadReferralData = (data) => {
   const filterRefferalByDateDesc = payload.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
   return {
     type: REFERRAL_DATA,
-    payload: filterRefferalByDateDesc.slice(0, 100)
+    payload: filterRefferalByDateDesc.slice(0, 100),
+    rawObj: data
   }
 };
 

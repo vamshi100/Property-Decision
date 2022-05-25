@@ -21,9 +21,10 @@ import MainPageFooter from './MainPageFooter';
 
 
 
+
 function MainPage(props) {
 
-  const { loadReferralData, property, referralLoading } = props;
+  const { loadExcelData, loadReferralData, property, referralLoading } = props;
 
 
   useEffect(() => {
@@ -41,7 +42,7 @@ function MainPage(props) {
       });
       wb.SheetNames.forEach(sheet => {
         let rawObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheet]);
-        loadReferralData(rawObj.slice(0, 100));
+        loadReferralData(rawObj);
       });
     });
   }, []);
@@ -151,6 +152,7 @@ function MainPage(props) {
             if (property.referralData.length) {
               property.referralData.forEach(policyObject => {
                 if (policyObject.submissionId === event.value || policyObject.policyId === event.value) {
+                  loadExcelData(property.rawObj, policyObject.policyId);
                   history.push(`policy-page/${policyObject.policyId}`, {
                     policyNumber: policyObject.policyId
                   })

@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 
 function RiskScore (props) {
 
-  const {primary, property} = props;
+  const {primary, property, state, setState} = props;
 
 
     return (

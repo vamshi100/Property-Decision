@@ -30,11 +30,13 @@ export default (state = initialState.property, action) => {
     case MAX_OF_ALL_CUM_RISK_SCORES:
       return {
         ...state,
+        loading: false,
         maxOfAllCumRiskScores: action.payload
       }
     case REFERRAL_DATA:
       return {
         ...state,
+        rawObj: action.rawObj,
         referralData: action.payload,
         loading: false
       }
@@ -50,7 +52,7 @@ export default (state = initialState.property, action) => {
         policies: action.payload,
         loading: false
       }
-    case UPDATE_POLICY:
+    case UPDATE_POLICY:debugger
       return {
         ...state,
         policies: [
