@@ -1,5 +1,4 @@
 .other-policy-container {
-  width: 30vw;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -14,7 +13,7 @@
   border: 1px solid black;
   background: #2a78bc;
   width: 20vw;
-  height: 20px;
+  height: fit-content;
 }
 
 .other-policy-body {

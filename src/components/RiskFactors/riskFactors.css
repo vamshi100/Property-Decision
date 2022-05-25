@@ -1,9 +1,31 @@
-.catClaims,
-.nonCatClaims,
-.liabilityClaims,
-.protectionClass {
-  width: 20vw;
+.catClaims {
+  width: 21vw;
   display: flex;
   justify-content: space-between;
+  margin: 0 20px 0 0;
   padding-bottom: 2vh;
+}
+
+.nonCatClaims,
+.liabilityClaims {
+  width: 21vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 20px;
+  padding-bottom: 2vh;
+}
+
+.protectionClass {
+  width: 19vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 20px;
+  padding-bottom: 2vh;
+}
+
+.risk-form{
+  display: flex;
+  width: 97vw;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }

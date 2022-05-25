@@ -1,13 +1,17 @@
-.risk-score {
-  width: 30vw;
-  justify-content: center;
-  display: flex;
+.risk-score-container {
   align-items: center;
-  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 60px;
+  border: 1px solid black;
+  background: white;
+  text-align: center;
+  font-size: 25px;
 }
 
 .risk-score-header {
-  width: 200px;
+  width: 100%;
   height: 40px;
   align-items: center;
   display: flex;
@@ -18,13 +22,14 @@
   background: #2a78bc;
 }
 
-.risk-score-container {
-  width: 200px;
-  height: 60px;
-  border: 1px solid black;
-  background: white;
-  text-align: center;
-  font-size: 25px;
+.risk-score-sub-wrapper {
+    max-width: 200px;
+}
+
+.risk-score-wrapper {
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .reset-risk-button {

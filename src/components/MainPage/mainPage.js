@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   useHistory,
 } from "react-router-dom";
-import { Link } from 'react-router-dom';
-import './mainPage.css'
+import './mainPage.css';
 
 // Data
 import * as XLSX from "xlsx";
@@ -13,6 +12,7 @@ import policyData from '../../inputData/policyData.xlsx';
 import Grid from '@mui/material/Grid';
 import { DataGrid } from '@mui/x-data-grid';
 import { withTheme } from '@mui/styles';
+import Typography from '@mui/material/Typography';
 
 // Components
 import AppBar from '../AppBar/AppBar';
@@ -21,22 +21,11 @@ import MainPageFooter from './MainPageFooter';
 
 
 
+
 function MainPage(props) {
 
-  const { loadReferralData, property, referralLoading } = props;
+  const { loadExcelData, loadReferralData, property, referralLoading } = props;
 
-  const [state, setState] = useState({
-    policyNumber: ''
-  });
-
-
-
-
-  function policyNumber(e) {
-    setState({
-      policyNumber: e.target.value
-    });
-  };
 
   useEffect(() => {
     if (!property.referralDataIsLoading) {
@@ -53,7 +42,7 @@ function MainPage(props) {
       });
       wb.SheetNames.forEach(sheet => {
         let rawObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheet]);
-        loadReferralData(rawObj.slice(0, 100));
+        loadReferralData(rawObj);
       });
     });
   }, []);
@@ -65,63 +54,97 @@ function MainPage(props) {
   }, [property.referralData]);
 
 
+  const columnWidth = 249;
+
+
   // Data Grid Columns & Rows
   const columns = [
     {
+      align: "center",
+      headerAlign: "center",
       field: 'submissionId',
       headerName: 'Submission Number',
-      width: 175,
+      width: columnWidth,
       type: 'string'
     },
     {
+      align: "center",
+      headerAlign: "center",
       field: 'policyId',
       headerName: 'Policy Number',
-      width: 175,
+      width: columnWidth,
       editable: false,
     },
     {
+      align: "center",
+      headerAlign: "center",
       field: 'effectiveDate',
       headerName: 'Policy Effective Date',
-      width: 175,
+      width: columnWidth,
       editable: false,
       sortable: true,
     },
     {
+      align: "center",
+      headerAlign: "center",
       field: 'dateReferred',
       headerName: 'Date Referred',
       type: 'number',
-      width: 150,
+      width: columnWidth,
       editable: true,
     },
     {
+      align: "center",
+      headerAlign: "center",
       field: 'daysPendingReview',
       headerName: 'Days Pending Review',
       description: 'This column has a value getter and is not sortable.',
       sortable: false,
-      width: 175,
+      width: columnWidth,
     },
     {
+      align: "center",
+      headerAlign: "center",
       field: 'status',
       headerName: 'Status',
       description: 'This column has a value getter and is not sortable.',
       sortable: false,
-      width: 175,
+      width: columnWidth,
     },
   ];
 
   const history = useHistory();
-  const rows = property.referralData;
+  const rows = property.referralData.slice(0, 10);
 
 
   return (
     <Grid container className="home" >
 
-      <AppBar {...props} />
 
-      <Grid item xs={10} style={{ border: 'solid #000 1px', height: 400, width: '70%' }}>
+      <Grid item xs={12} direction='column' style={{ display: 'flex', height: '20%' }}>
+
+        <AppBar appBar="home-appbar" {...props} />
+
+        <Typography variant="h5" style={{ backgroundColor: '#f2f2f2', fontSize: '25px', height: '200px', padding: '25px 0 0 10px'}}>
+          Property Underwriting Decision Support Tool
+        </Typography>
+
+      </Grid>
+
+      <Grid item xs={12} id="datagrid-wrapper">
         <DataGrid
           rows={rows}
           columns={columns}
+          columnBuffer
+          getCellClassName={(params) => {
+            if (params.colDef.headerName === "Submission Number"){
+              return "submission-number-cell"
+            }
+            if (params.colDef.headerName === "Policy Number"){
+              return "policy-number-cell"
+            }
+          }}
+          headerAlign="center"
           hideFooter
           loading={property.referralDataIsLoading}
           onCellClick={(event) => {
@@ -129,14 +152,15 @@ function MainPage(props) {
             if (property.referralData.length) {
               property.referralData.forEach(policyObject => {
                 if (policyObject.submissionId === event.value || policyObject.policyId === event.value) {
-                  history.push(`policy-page/${policyObject.policyId}`)
+                  loadExcelData(property.rawObj, policyObject.policyId);
+                  history.push(`policy-page/${policyObject.policyId}`, {
+                    policyNumber: policyObject.policyId
+                  })
                 }
               })
             }
           }}
           pageSize={10}
-          rowsPerPageOptions={[3]}
-        // disableSelectionOnClick
         />
       </Grid>
 

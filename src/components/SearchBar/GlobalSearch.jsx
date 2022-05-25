@@ -10,29 +10,39 @@ import Autocomplete from '@mui/material/Autocomplete';
 import '../AppBar/AppBar.css';
 
 export default function GlobalSearch(props) {
-    const {data} = props;
+    const {data, loadExcelData } = props;
+    const { rawObj } = props.property;
     const [state, setState] = React.useState({
       autocompleteLabel: 'Enter a policy number...',
       policyNumber:''
     });
     const history = useHistory();
   return (
-    <Stack spacing={2} sx={{ width: 350 }}>
+    <Stack spacing={2} sx={{ width: 300 }}>
       <Autocomplete
-        clearOnBlur
+        clearOnBlur={true}
         freeSolo
         fullWidth
         id="free-solo-2-demo"
         loading={data.length ? false : true}
         disableClearable
-        onBlur={() => setState({autocompleteLabel: 'Enter a policy number...'})}
+        onBlur={() => setState({
+          autocompleteLabel: 'Enter a policy number...',
+      })}
         onChange={(event) => {
-          if(event.type === 'click'){
+          if(event.type === 'click' && !history.location.pathname.includes('policy-page')){
+            loadExcelData(rawObj, event.target.textContent);
             history.push({
-              pathname: `policy-page/${event.target.textContent}` 
+              pathname: `policy-page/${event.target.textContent}`,
+              state: {
+                policyNumber: event.target.textContent
+              } 
           })
+          } else if (event.type === 'click' && history.location.pathname.includes('policy-page')){
+            window.open(`${event.target.textContent}`, "_blank");
           }
-      }}
+          }
+      }
         onFocus={() => setState({autocompleteLabel: ''})}
         onInputChange={(_event, value) => {
             
