@@ -24,7 +24,7 @@ import MainPageFooter from './MainPageFooter';
 
 function MainPage(props) {
 
-  const { loadExcelData, loadReferralData, property, referralLoading } = props;
+  const {calculateCumulativeRisk, loadExcelData, loadReferralData, property, referralLoading } = props;
 
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function MainPage(props) {
       referralLoading(true);
     } else {
       referralLoading(false);
-    };
+    }
 
     fetch(policyData).then(res => {
       return res.arrayBuffer();
@@ -50,7 +50,7 @@ function MainPage(props) {
   useEffect(() => {
     if (property.referralData.length) {
       referralLoading(false);
-    };
+    }
   }, [property.referralData]);
 
 
@@ -150,12 +150,25 @@ function MainPage(props) {
           onCellClick={(event) => {
 
             if (property.referralData.length) {
-              property.referralData.forEach(policyObject => {
+              property.referralData.forEach(async policyObject => {
                 if (policyObject.submissionId === event.value || policyObject.policyId === event.value) {
-                  loadExcelData(property.rawObj, policyObject.policyId);
-                  history.push(`policy-page/${policyObject.policyId}`, {
-                    policyNumber: policyObject.policyId
+                 new Promise(resolve => {
+                   resolve(loadExcelData(property.rawObj, policyObject.policyId))
+                 }).then(loadExcelResponse => {
+                    return new Promise(resolve => {
+                      resolve(calculateCumulativeRisk(loadExcelResponse.payload[0]))
+                  })}
+                  ).then(cumRiskResponse => {
+                    if(cumRiskResponse.payload){
+                      history.push(`policy-page/${policyObject.policyId}`, {
+                        cumulativeRisk: cumRiskResponse.payload,
+                        policyNumber: policyObject.policyId
+                      })
+                    }
                   })
+                  
+                  
+                  
                 }
               })
             }

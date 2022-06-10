@@ -31,13 +31,21 @@ export default function GlobalSearch(props) {
       })}
         onChange={(event) => {
           if(event.type === 'click' && !history.location.pathname.includes('policy-page')){
-            loadExcelData(rawObj, event.target.textContent);
-            history.push({
-              pathname: `policy-page/${event.target.textContent}`,
-              state: {
-                policyNumber: event.target.textContent
-              } 
-          })
+            new Promise(resolve => {
+              resolve(loadExcelData(rawObj, event.target.textContent))
+            }).then(loadExcelResponse => {
+               return new Promise(resolve => {
+                 resolve(props.calculateCumulativeRisk(loadExcelResponse.payload[0]))
+             })}
+             ).then(cumRiskResponse => {
+               if(cumRiskResponse.payload){
+                 history.push(`policy-page/${event.target.textContent}`, {
+                   cumulativeRisk: cumRiskResponse.payload,
+                   policyNumber: event.target.textContent
+                 })
+               }
+             })
+             
           } else if (event.type === 'click' && history.location.pathname.includes('policy-page')){
             window.open(`${event.target.textContent}`, "_blank");
           }

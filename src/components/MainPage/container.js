@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import MainPage from './mainPage';
-import {loadExcelData, loadReferralData, referralLoading} from '../../redux/actions/propertyActions';
+import {calculateCumulativeRisk, loadExcelData, loadReferralData, referralLoading} from '../../redux/actions/propertyActions';
 
 const mapStateToProps = state => {
   return {
@@ -9,6 +9,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
+  calculateCumulativeRisk,
   loadExcelData,
   loadReferralData,
   referralLoading

@@ -48,7 +48,7 @@ class ClientInformation extends Component {
         data: '1234 tst st, test, usa.',
         className: 'address',
         value: `${_.get(property, 'policies[0].streetAddress', '')}
-        '\n${_.get(property, 'policies[0].cityAddress', '')}
+        \n${_.get(property, 'policies[0].cityAddress', '')}
         \n${_.get(property, 'policies[0].stateAddress', '')}
         \n${_.get(property, 'policies[0].pinAddress', '')}`,
         disabled: true
@@ -90,7 +90,7 @@ class ClientInformation extends Component {
         label: occupationText(),
         id: 'Named Insured Occupation',
         className: 'occupation',
-        list: ['Manager', 'Teacher', 'Clerk', 'Student', 'Retired', 'other'],
+        list: ['Manager', 'Teacher', 'Clerk', 'Driver', 'Other'],
         value: _.get(property, 'policies[0].occupation', ''),
         disabled: false,
         stateVariable: 'occupation',
