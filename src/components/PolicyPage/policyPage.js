@@ -42,6 +42,9 @@ function PolicyPage(props) {
     currentPolicy: property.policies[0]
   });
 
+  // React-Router History
+  const history = useHistory();
+
   useEffect(() => {
     const policyId = match.params.id;
     loading(true);
@@ -54,35 +57,36 @@ function PolicyPage(props) {
       wb.SheetNames.forEach(sheet => {
         let rawObj = XLSX.utils.sheet_to_row_object_array(wb.Sheets[sheet]);
         loadAllCumRiskScores(rawObj);
+        loadExcelData(rawObj, history.location.state.policyNumber)
       });
     });
+    
   }, [])
   
   // Calculate Cumulative Risk after initial data load
   useEffect(() => {
     if (property.policies !== null && property.policies !== undefined && property.policies.length !== 0){
-      const newCumulativeRiskParams = Array.from(Object.values(property.policies[0]).slice(9,30));
-      calculateCumulativeRisk(newCumulativeRiskParams);
+      calculateCumulativeRisk(property.policies[0]);
     }
-  },[]);
+  },[property.policies[0]]);
+
 
   // Calculate Risk Score upon cumulativeRisk change
   useEffect(() => {
-    calculateRiskScore(property.cumulativeRisk, property.maxOfAllCumRiskScores)
-  }, [property.cumulativeRisk, property.maxOfAllCumRiskScores])
+    calculateRiskScore(history.location.state.cumulativeRisk, property.maxOfAllCumRiskScores)
+  }, [property.maxOfAllCumRiskScores])
 
   
-  // React-Router History
-  const history = useHistory();
+  
 
 
   const primary = props.theme.palette.primary.main;
 
   if (property.loading) {
     return (
-      <div className="home">
+      <div className="load-text-home">
         <div className="load-text">
-          Loading, Please Wait.
+          Loading, Please Wait...
         </div>
       </div>
     );
