@@ -5,7 +5,7 @@ import _ from 'lodash';
 import './riskScore.css'
 
 // Redux functions
-import { calculateRiskScore } from '../../redux/actions/propertyActions';
+
 
 // MUI Components
 import Grid from '@mui/material/Grid';
@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 
 function RiskScore (props) {
 
-  const {primary, property, state, setState} = props;
+  const {calculateRiskScore, primary, property, state, setState} = props;
 
 
     return (
@@ -27,7 +27,7 @@ function RiskScore (props) {
           </Grid>
         </Grid>
 
-        <button className="reset-risk-button" style={{ backgroundColor: `${primary}` }}>Recalculate <br/> Risk Score</button>
+        <button className="reset-risk-button" onClick={() => calculateRiskScore(property.cumulativeRisk, property.maxOfAllCumRiskScores)} style={{ backgroundColor: `${primary}`, cursor: 'pointer' }}>Recalculate <br/> Risk Score</button>
       </Grid>
     );
 
