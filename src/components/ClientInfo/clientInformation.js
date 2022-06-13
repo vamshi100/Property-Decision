@@ -105,7 +105,7 @@ class ClientInformation extends Component {
           </Typography>
         </Grid>
         
-        <CustomForm config={clientInfoConfig} formType="client-information" />
+        <CustomForm {...this.props} config={clientInfoConfig} formType="client-information" />
 
         
       </Grid>

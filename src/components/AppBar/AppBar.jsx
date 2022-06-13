@@ -10,6 +10,8 @@ import './AppBar.css'
 import Avatar from '@mui/material/Avatar';
 import Grid from '@mui/material/Grid';
 import { withTheme } from '@mui/styles';
+import Typography from '@mui/material/Typography';
+
 
 // Components
 import GlobalSearch from '../SearchBar/GlobalSearch';
@@ -34,6 +36,7 @@ function AppBar(props) {
       </Grid>
 
       <Grid item className="profile">
+        <Typography className="appbar-name-and-title" variant='h3'>David Jefferson, Practice Director</Typography>
         <Avatar alt="UU" src={profile_pic} />
       </Grid>
 

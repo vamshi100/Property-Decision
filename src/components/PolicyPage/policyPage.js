@@ -73,10 +73,11 @@ function PolicyPage(props) {
 
   // Calculate Risk Score upon cumulativeRisk change
   useEffect(() => {
-    calculateRiskScore(history.location.state.cumulativeRisk, property.maxOfAllCumRiskScores)
+
+      calculateRiskScore(history.location.state.cumulativeRisk, property.maxOfAllCumRiskScores)
+
   }, [property.maxOfAllCumRiskScores])
 
-  
   
 
 
@@ -123,7 +124,7 @@ function PolicyPage(props) {
       <Grid item className="container" direction='column' wrap>
         <Grid container direction="row" className="clientInformation-container">
           <PolicyRiskScore property={property} primary={primary} state={state} setState={setState} {...props} />
-          <ClientInformation property={property} updatePolicy={updatePolicy} />
+          <ClientInformation {...props} property={property} updatePolicy={updatePolicy} />
           <OtherActivePolicies property={property} primary={primary} />
         </Grid>
         <div className="policy-limits-container">

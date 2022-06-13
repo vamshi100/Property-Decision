@@ -99,7 +99,7 @@ function MainPage(props) {
       field: 'daysPendingReview',
       headerName: 'Days Pending Review',
       description: 'This column has a value getter and is not sortable.',
-      sortable: false,
+      sortable: true,
       width: columnWidth,
     },
     {
@@ -108,7 +108,7 @@ function MainPage(props) {
       field: 'status',
       headerName: 'Status',
       description: 'This column has a value getter and is not sortable.',
-      sortable: false,
+      sortable: true,
       width: columnWidth,
     },
   ];
