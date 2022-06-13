@@ -1,5 +1,7 @@
 .catClaims {
-  width: 21vw;
+  align-items: center;
+  height: 45px;
+  width: 22vw;
   display: flex;
   justify-content: space-between;
   margin: 0 20px 0 0;
@@ -8,7 +10,9 @@
 
 .nonCatClaims,
 .liabilityClaims {
-  width: 21vw;
+  align-items: center;
+  height: 45px;
+  width: 22vw;
   display: flex;
   justify-content: space-between;
   margin: 0px 20px;

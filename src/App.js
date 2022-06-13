@@ -5,8 +5,7 @@ import MainPage from './components/MainPage/container';
 import PolicyPage from './components/PolicyPage/container';
 import './App.css';
 
-// MUI Theme import
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 
 class App extends Component {
   render = () => {

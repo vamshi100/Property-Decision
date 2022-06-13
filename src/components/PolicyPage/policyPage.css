@@ -1,29 +1,35 @@
 .policy {
   align-content: flex-start;
   width: 100vw;
-    height: 100vh;
-    background: #ffffff;
-    display: flex;
-    overflow: hidden;
-    justify-content: center; 
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
 
 }
 
-.effectiveDate > input, .policy-owner-full-name > input, .submissionId > input, .priorInsurance > input {
-  background-color:#d5d4d4;
-  height:fit-content;
+.effectiveDate>input,
+.policy-owner-full-name>input,
+.submissionId>input,
+.priorInsurance>input {
+  background-color: #d5d4d4;
+  height: fit-content;
   width: 100%
 }
 
-.footer-wrapper{
+.footer-wrapper {
   height: 20%;
 }
 
-textarea[id='Named Insured Address']{
-  background-color:#d5d4d4;
+textarea[id='Named Insured Address'] {
+  background-color: #d5d4d4;
 }
 
-label, input, button, select {
+label,
+input,
+button,
+select {
   padding: 10px;
   width: 200px;
   border: 1px solid black;
@@ -32,6 +38,7 @@ label, input, button, select {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
 }
+
 textarea {
   padding: 10px;
   width: 300px;
@@ -59,7 +66,19 @@ label {
   overflow-x: hidden;
 }
 
-.load-text-home{
+.footer-container {
+  border: none;
+  padding: 30px;
+}
+
+i {
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: 20px;
+}
+
+.load-text-home {
   align-items: center;
   display: flex;
   height: 100vh;
@@ -71,18 +90,26 @@ label {
   flex-direction: column;
 }
 
-.footer-container {
-  border: none;
-  padding: 30px;
+select[id='Garage'] {
+  width: 245px
+}
+
+select[id='Roof Type'] {
+  width: 245px
+}
+
+select[id='Smart Dwelling'] {
+  width: 245px
+}
+
+select[id='Video & Smart Dwelling'] {
+  width: 245px
+}
+
+select[id='Water Loss Prevention Device'] {
+  width: 245px
 }
 
 .underwriting {
   border-bottom: none;
-}
-
-i {
-  display: flex;
-  align-items: center;
-  position: relative;
-  right: 20px;
 }

@@ -17,6 +17,9 @@ const theme = createTheme({
     primary: {
       main: 'rgb(0, 120, 215)',
     },
+    secondary: {
+      main: '#000'
+    }
   },
   typography: {
     h6: {

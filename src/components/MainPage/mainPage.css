@@ -1,20 +1,22 @@
-#datagrid-wrapper{
-    height: 75%;
-    overflow-x: hidden;
-    width: 100%;
+#datagrid-wrapper {
+  height: 75%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .home {
   align-content: flex-start;
   width: 100vw;
-    height: 100vh;
-    background: #ffffff;
-    display: flex;
-    justify-content: center;  
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
 
 }
 
-label, input, button {
+label,
+input,
+button {
   padding: 10px;
 }
 
@@ -22,14 +24,14 @@ label, input, button {
   font-size: 35px;
 }
 
-.main-page-footer{
+.main-page-footer {
   background-color: #f2f2f2;
   height: 5%;
 }
 
 .mainPageLogo {
   top: 0;
-  left: 1%; 
+  left: 1%;
   height: 16px;
 }
 
@@ -48,29 +50,37 @@ label, input, button {
   color: #ffffff;
 }
 
-.MuiDataGrid-columnHeaderTitle{
+.MuiDataGrid-columnHeaderTitle {
   font-size: 16px;
   font-weight: 600;
 }
 
-.MuiDataGrid-menuIconButton{
-  margin-right: 20px !important;
+.MuiDataGrid-columnHeaderTitleContainer{
+  display: flex;
+  justify-content: space-evenly !important;
+  padding-left: 30px;
+}
+
+.MuiDataGrid-menuIconButton {
+
   height: 20px;
   width: 20px;
 }
 
-.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeSmall{
-  margin-left: 50px;
+.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeSmall {
+  color: #fff;
   height: 20px;
   width: 20px;
 }
 
-.policy-number-cell, .submission-number-cell {
-  color:rgb(0, 120, 215);
+.policy-number-cell,
+.submission-number-cell {
+  color: rgb(0, 120, 215);
   cursor: pointer !important;
   text-decoration: underline;
 }
 
-.policy-number-cell:hover, .submission-number-cell:hover {
+.policy-number-cell:hover,
+.submission-number-cell:hover {
   background-color: #e8e7e7;
 }
