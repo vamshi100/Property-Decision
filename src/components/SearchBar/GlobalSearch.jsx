@@ -21,6 +21,7 @@ export default function GlobalSearch(props) {
     <Stack spacing={2} sx={{ width: 300 }}>
       <Autocomplete
         clearOnBlur={true}
+        disabled={history.location.pathname.includes('policy-page') ? true : false}
         freeSolo
         fullWidth
         id="free-solo-2-demo"

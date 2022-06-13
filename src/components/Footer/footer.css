@@ -3,8 +3,16 @@
   justify-content: space-between;
   width: 90vw;
 }
-.footer-left, .footer-right {
+.footer-left {
   width: 40vw;
+  justify-content: space-between;
+  display: flex;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer-right {
+  width: 41vw;
   justify-content: space-between;
   display: flex;
   text-decoration: none;

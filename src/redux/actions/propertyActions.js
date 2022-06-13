@@ -153,7 +153,7 @@ export const loadReferralData = (data) => {
       submissionId: _.get(item, '[Submission ID]', '-'),
       policyId: _.get(item, '[Policy Number]', '-'),
       effectiveDate: _.get(item, '[Policy Effective Date]', 'N/A'),
-      dateReffered: _.get(item, '[Date Referred]', 'N/A'),
+      dateReferred: _.get(item, '[Date Referred]', 'N/A'),
       daysPendingReview: _.get(item, '[Days Pending Review]', 'N/A'),
       status: _.get(item, '[Status]', 'N/A'),
 

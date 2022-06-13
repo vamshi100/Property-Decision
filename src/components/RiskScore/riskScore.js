@@ -4,12 +4,9 @@ import _ from 'lodash';
 
 import './riskScore.css'
 
-// Redux functions
-
 
 // MUI Components
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 
 function RiskScore (props) {
 

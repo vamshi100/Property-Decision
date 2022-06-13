@@ -1,3 +1,13 @@
+.appbar-name-and-title{
+  color: #fff;
+  font-size: 20px !important;
+}
+
+.global-search {
+  left: 130px;
+  position: relative;
+}
+
 .home-appbar {
   min-height: 50%;
   width: 100%;
@@ -25,4 +35,12 @@
   display: flex;
   justify-content: space-between;
   padding: 0px 20px;
+}
+
+.profile {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 25%;
 }
